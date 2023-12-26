@@ -62,7 +62,7 @@ const priceFilterHandler = () => {
   return (
     <>
       <div className="new-product-wrapper">
-        <h2>Selected Product Item</h2>
+        <h2>Selected Product Items by Sandip</h2>
         <div className="product-listing-wrapper">
           {productInfo.map((productItem, index) => {
             let { id, productName, modelName, category, price, image } =
