@@ -1,38 +1,137 @@
-.App {
-  text-align: center;
+.container{
+  padding: 15px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1,h2,h3,h4{
+  padding: 0px;
+  margin: 0px 0px 12px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+.box-modal{
+  width: 200px;
+  height: 200px;
+  background-color: red;
+  padding: 15px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.counter-btn-group{
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  gap: 20px;
+}
+
+.btn{
+    font-size: 17px;
+    font-weight: 500;
+    font-family: "Lora", sans-serif;
+    color: #fff;
+    line-height: 50px;
+    height: 50px;
+    background: #E80554;
+    display: inline-block;
+    padding: 0px 24px;
+    border-radius: 4px;
+    border: 1px solid #E80554;
+    vertical-align: baseline;
+    text-transform: capitalize;
+    box-shadow: none;
+    transition: 0.3s all;
+    position: relative;
+    cursor: pointer;
+}
+
+.counter-value-increment{
+    padding: 10px;
+    border: 1px solid #c8c7c7;
+    margin-bottom: 30px;
+}
+
+.card-item-wrapper{
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card-item {
+    width: calc(25% - 47px);
+    padding: 15px;
+    margin: 0px;
+    background-color: white;
+    margin-bottom: 20px;
+    border: 1px solid black;
+    text-align: center;
+}
+
+.card-item img{
+  width: 150px;
+  height: 150px;
+  display: inline-block;
+  border-radius: 50%;
+}
+
+.active-item{
+  background-color: red;
+  display: none;
+}
+
+.product-listing-wrapper{
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.product-listing{
+  width: calc(33% - 42px);
+  border: 1px solid rgb(144, 144, 144);
+  padding: 15px;
+  background-color: rgb(248, 241, 241);
+}
+
+.product-listing span{
+  font-size: 14px;
+  line-height: 18px;
+  margin-right: 10px;
+  font-weight: 300;
+}
+
+.product-wrap{
+  display: flex;
+  gap: 20px;
+}
+
+.price-text{
+  font-size: 28px;
+  line-height: 32px;
+  color: red;
+  font-weight: bold;
+}
+
+.price-text span{
+  color: black;
+  margin-right: 10px;
+}
+
+.active-item{
+  background-color: white;
+  border: 1px solid red;
+}
+
+.product-btn{
+  display: flex;
+  gap: 20px;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.product-btn a{
+  text-decoration: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.new-product-wrapper{
+  padding: 20px;
+  background-color: white;
+  border: 1px solid black;
+  margin-bottom: 30px;
 }
