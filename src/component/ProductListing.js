@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 
 const ProductListing = () => {
-
   const [productInfo, setProductInfo] = useState([
     {
       id: 1,
@@ -46,12 +45,14 @@ const ProductListing = () => {
   ]);
 
   const selectUser = (userId) => {
-    setProductInfo(prev => {
-      return prev.map(productUser => {
-        return productUser.id == userId ? { ...productUser, selected: true } : { ...productUser }
-      })
-    })
-  }
+    setProductInfo((prev) => {
+      return prev.map((productUser) => {
+        return productUser.id == userId
+          ? { ...productUser, selected: true }
+          : { ...productUser };
+      });
+    });
+  };
 
   const priceFilterHandler = () => {
     setProductInfo((prev) =>
@@ -59,85 +60,70 @@ const ProductListing = () => {
     );
   };
 
-
   useEffect(() => {
     console.log("productInfo =>", productInfo);
-  }, [productInfo])
+  }, [productInfo]);
+
+  const goBackHandler = (goBackId) => {
+    setProductInfo((prev) => {
+      return prev.map((prevItem) => {
+        return prevItem.id === goBackId
+          ? { ...prevItem, unSelected: true }
+          : { ...prevItem };
+      });
+    });
+  };
 
   return (
     <>
       <div className="new-product-wrapper">
         <h2>Selected Product Items by Sandip</h2>
         <div className="product-listing-wrapper">
-          {productInfo.filter((single, index) => (single.hasOwnProperty("selected") && single.selected == true)).map((productItem, index) => {
-            let { id, productName, modelName, category, price, image } =
-              productItem;
-            return (
-              <div
-                className={`product-listing`}
-                key={index}
-              >
-                <figure className="product-image">
-                  <img src={image} />
-                </figure>
-                <h3>
-                  <span>Product Name:</span>
-                  {productName}
-                </h3>
-                <div className="product-wrap">
-                  <h4>
-                    <span>Model Name:</span>
-                    {modelName}
-                  </h4>
-                  <h4>
-                    <span>Category:</span>
-                    {category}
-                  </h4>
-                </div>
-                <div className="price-text">
-                  <span>Price</span>
-                  {price}
-                </div>
-              </div>
+          {productInfo
+            .filter(
+              (single, index) =>
+                single.hasOwnProperty("selected") && single.selected == true
             )
-          })}
-          {/* {productInfo.map((productItem, index) => {
-            let { id, productName, modelName, category, price, image } =
-              productItem;
-
-            return (
-              <div
-                className={`product-listing ${
-                  productItem.hasOwnProperty("selected") && productItem.selected
-                    ? "active-item"
-                    : ""
-                }`}
-                key={index}
-              >
-                <figure className="product-image">
-                  <img src={image} />
-                </figure>
-                <h3>
-                  <span>Product Name:</span>
-                  {productName}
-                </h3>
-                <div className="product-wrap">
-                  <h4>
-                    <span>Model Name:</span>
-                    {modelName}
-                  </h4>
-                  <h4>
-                    <span>Category:</span>
-                    {category}
-                  </h4>
+            .map((productItem, index) => {
+              let { id, productName, modelName, category, price, image } =
+                productItem;
+              return (
+                <div
+                  className={`product-listing product-selected ${
+                    productItem.hasOwnProperty("unSelected") &&
+                    productItem.unSelected == true
+                      ? "d-none"
+                      : ""
+                  }`}
+                  key={index}
+                >
+                  <div className="cross-item" onClick={() => goBackHandler(id)}>
+                    x
+                  </div>
+                  <figure className="product-image">
+                    <img src={image} />
+                  </figure>
+                  <h3>
+                    <span>Product Name:</span>
+                    {productName}
+                  </h3>
+                  <div className="product-wrap">
+                    <h4>
+                      <span>Model Name:</span>
+                      {modelName}
+                    </h4>
+                    <h4>
+                      <span>Category:</span>
+                      {category}
+                    </h4>
+                  </div>
+                  <div className="price-text">
+                    <span>Price</span>
+                    {price}
+                  </div>
                 </div>
-                <div className="price-text">
-                  <span>Price</span>
-                  {price}
-                </div>
-              </div>
-            );
-          })} */}
+              );
+            })}
         </div>
       </div>
 
@@ -148,10 +134,11 @@ const ProductListing = () => {
             productUser;
           return (
             <div
-              className={`product-listing ${productUser.hasOwnProperty("selected") && productUser.selected
-                ? "active-item"
-                : ""
-                }`}
+              className={`product-listing ${
+                productUser.hasOwnProperty("selected") && productUser.selected
+                  ? "active-item"
+                  : ""
+              }`}
               key={index}
               onClick={() => selectUser(id)}
             >
@@ -191,6 +178,6 @@ const ProductListing = () => {
       </div>
     </>
   );
-}
+};
 
 export default ProductListing;
